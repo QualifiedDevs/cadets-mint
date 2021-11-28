@@ -26,6 +26,10 @@ const Header = styled((props) => {
   justify-content: flex-end;
   align-items: center;
 
+  .wallet-status {
+    font-size: 1.2em;
+  }
+
   &>* {
     margin: 0 1.5rem;
     :first-child {

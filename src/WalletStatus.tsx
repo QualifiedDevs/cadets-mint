@@ -3,7 +3,7 @@ import { Box, Typography } from "@mui/material";
 
 const WalletStatus = styled((props) => {
   return (
-    <Box {...props}>
+    <Box {...props} className={`${props.className} wallet-status`}>
       <div className="icon">
         <div className="icon-color" />
       </div>
@@ -13,6 +13,11 @@ const WalletStatus = styled((props) => {
 })`
   display: flex;
   align-items: center;
+  
+  * {
+    font-size: inherit;
+  }
+
   .icon {
     width: .8em;
     height: .8em;
@@ -26,7 +31,7 @@ const WalletStatus = styled((props) => {
       border-radius: inherit;
       width: 65%;
       height: 65%;
-      background: #1eb111;
+      background: ${({theme}) => theme.palette.success.light};
     }
   }
 `;
