@@ -1,18 +1,29 @@
 import * as React from "react";
-import CssBaseline from "@mui/material/CssBaseline";
+import {CssBaseline, GlobalStyles} from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import theme from "../src/theme";
 
-import Header from "../src/Header";
+import dynamic from "next/dynamic";
+import { Toaster } from "react-hot-toast";
+import { WalletBalanceProvider } from "../hooks/useWalletBalance";
+
+require("@solana/wallet-adapter-react-ui/styles.css");
+
+const WalletConnectionProvider = dynamic(
+  () => import("../components/WalletConnection/WalletConnectionProvider"),
+  {
+    ssr: false,
+  }
+);
 
 export default function MyApp(props: AppProps) {
   const { Component, pageProps } = props;
   return (
     <React.Fragment>
       <Head>
-        <title>Cadets</title>
+        <title>Cadets Mint</title>
         <link href="/favicon.ico" rel="icon" />
         <meta
           content="minimum-scale=1, initial-scale=1, width=device-width"
@@ -20,14 +31,14 @@ export default function MyApp(props: AppProps) {
         />
       </Head>
       <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Header
-          socials={{
-            discord: "https://discord.gg/VvdZcU6Nyq",
-            twitter: "https://twitter.com/QualifiedDevs",
-          }}
-        />
-        <Component {...pageProps} />
+        <WalletConnectionProvider>
+          <WalletBalanceProvider>
+            <Toaster position="bottom-center" />
+            <CssBaseline />
+            <GlobalStyles styles={{html: {scrollBehavior: "smooth"}}}/>
+            <Component {...pageProps} />
+          </WalletBalanceProvider>
+        </WalletConnectionProvider>
       </ThemeProvider>
     </React.Fragment>
   );
