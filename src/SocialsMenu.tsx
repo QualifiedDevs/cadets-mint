@@ -14,18 +14,14 @@ const images = {
 
 const SocialIcon = styled((props) => {
   return (
-    <Box {...props}>
-      <Link href={props.href}>
-        {/*@ts-ignore*/}
-        <Image src={props.src} />
-      </Link>
-    </Box>
+    <Link href={props.href}>
+      <Box {...props}>
+        <Image src={props.src} layout="responsive" objectFit="contain" />
+      </Box>
+    </Link>
   );
 })`
-  width: 50px;
-  height: 50px;
-  display: grid;
-  place-items: center;
+  width: 35px;
 `;
 
 const SocialsMenu = styled((props) => {
@@ -47,13 +43,19 @@ const SocialsMenu = styled((props) => {
     </Box>
   );
 })`
-  ul {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 1.4rem;
+  nav {
+    ul {
+      list-style-type: none;
+
+      display: flex;
+      justify-content: flex-end;
+
+      li {
+
+        margin: 0 .25em;
+
+      }
+    }
   }
 `;
 

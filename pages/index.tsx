@@ -26,12 +26,12 @@ const Index = styled((props) => {
     >
       <Header
         socials={{
-          discord: "https://discord.com",
-          twitter: "https://twitter.com",
+          discord: "https://discord.gg/kANVN9cUCZ",
+          twitter: "https://twitter.com/crypto_cadets",
         }}
       />
-      <Box sx={{ mb: 5 }}>
-        <Image src={mockup} width="300" height="300" layout="fixed" />
+      <Box sx={{ mb: 5 }} className="mystery">
+        <Image src={mockup} layout="responsive" objectFit="contain" />
       </Box>
       <MintSupply sx={{ mb: 5 }} />
       <MultiButton>Connect Wallet</MultiButton>
@@ -52,8 +52,15 @@ const Index = styled((props) => {
     height: fit-content;
   }
 
-  img {
+  .mystery {
+    width: clamp(150px, 80%, 300px);
+
     border-radius: 10px;
+    
+    border: 8px solid #999999;
+    box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 25%);
+    img {
+    }
   }
 
   .mint-supply {

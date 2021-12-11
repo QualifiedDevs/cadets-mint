@@ -1,5 +1,6 @@
+import React, { useContext } from "react";
+
 import { styled } from "@mui/material/styles";
-import { Typography } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 
 import { useWallet } from "@solana/wallet-adapter-react";
@@ -17,7 +18,8 @@ import useCandyMachine from "../hooks/useCandyMachine";
 
 const MultiButton = styled((props) => {
   const { connected } = useWallet();
-  const { isSoldOut, mintStartDate, isMinting, startMint } = useCandyMachine();
+  const { isSoldOut, mintStartDate, isMinting, startMint, startMintMultiple } =
+    useCandyMachine();
 
   return (
     <LoadingButton
